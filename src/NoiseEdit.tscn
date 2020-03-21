@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://NoiseEdit.gd" type="Script" id=1]
+
+[node name="NoiseEdit" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 992.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "My Property: "
+align = 1
+valign = 1
+
+[node name="OctavesEdit" type="LineEdit" parent="."]
+margin_top = 996.0
+margin_right = 1920.0
+margin_bottom = 1020.0
+
+[node name="BigFloatVal" type="HSlider" parent="."]
+margin_top = 1024.0
+margin_right = 1920.0
+margin_bottom = 1040.0
+tick_count = 50
+
+[node name="SmallFloatVal1" type="HSlider" parent="."]
+margin_top = 1044.0
+margin_right = 1920.0
+margin_bottom = 1060.0
+max_value = 10.0
+step = 0.01
+tick_count = 2
+
+[node name="SmallFloatVal2" type="HSlider" parent="."]
+margin_top = 1064.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+max_value = 10.0
+step = 0.01
+tick_count = 2
+[connection signal="text_changed" from="OctavesEdit" to="." method="_on_OctavesEdit_text_changed"]
+[connection signal="value_changed" from="BigFloatVal" to="." method="_on_BigFloatVal_value_changed"]
+[connection signal="value_changed" from="SmallFloatVal1" to="." method="_on_SmallFloatVal1_value_changed"]
+[connection signal="value_changed" from="SmallFloatVal2" to="." method="_on_SmallFloatVal2_value_changed"]

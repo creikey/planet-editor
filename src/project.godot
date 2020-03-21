@@ -8,15 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "PropertyEdit",
+"language": "GDScript",
+"path": "res://PropertyEdit.gd"
+} ]
 _global_script_class_icons={
-
+"PropertyEdit": ""
 }
 
 [application]
 
 config/name="Planet Editor"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
 
 [rendering]
 

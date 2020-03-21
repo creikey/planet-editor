@@ -1,0 +1,3 @@
+[submodule "src/planet-generator"]
+	path = src/planet-generator
+	url = git@github.com:creikey/planet-generator.git
