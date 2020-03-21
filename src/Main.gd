@@ -44,3 +44,7 @@ func _on_FileDialog_file_selected(path):
 		editable_items.generator.apply_settings()
 #		editable_items.set_from_json_text(cur_file.get_as_text())
 	cur_file.close()
+
+
+func _on_ResetButton_pressed():
+	get_tree().reload_current_scene()

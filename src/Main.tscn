@@ -71,15 +71,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ResetButton" type="Button" parent="UI/MenuButtons"]
+margin_right = 133.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Reset"
+
 [node name="LoadButton" type="Button" parent="UI/MenuButtons"]
-margin_right = 202.0
+margin_left = 137.0
+margin_right = 270.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load"
 
 [node name="SaveButton" type="Button" parent="UI/MenuButtons"]
-margin_left = 206.0
+margin_left = 274.0
 margin_right = 409.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
@@ -98,6 +106,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="edited" from="UI/MainEditor/SettingsPanelContainer/EditableItems/ColorEdit" to="." method="_on_ColorEdit_edited"]
+[connection signal="pressed" from="UI/MenuButtons/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="file_selected" from="UI/FileDialog" to="." method="_on_FileDialog_file_selected"]
