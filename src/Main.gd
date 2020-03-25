@@ -1,5 +1,7 @@
 extends Node2D
 
+signal reload_from_aseprite
+
 onready var spacer: Control = get_node("UI/MainEditor/Spacer")
 
 export (NodePath) var editable_items_path
@@ -41,10 +43,17 @@ func _on_FileDialog_file_selected(path):
 	else:
 		cur_file.open(path, File.READ)
 		editable_items.generator.settings = cur_file.get_var()
+#		print(instance_from_id(editable_items.generator.settings["custom_planet_image"][1].object_id))
+		editable_items.update_gui_from_settings()
 		editable_items.generator.apply_settings()
+		
 #		editable_items.set_from_json_text(cur_file.get_as_text())
 	cur_file.close()
 
 
 func _on_ResetButton_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_FetchFromAsepriteButton_pressed():
+	emit_signal("reload_from_aseprite")

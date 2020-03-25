@@ -21,14 +21,23 @@ func _ready():
 				cur_editable = preload("res://Vec2Edit.tscn").instance()
 			"bool":
 				cur_editable = preload("res://BoolEdit.tscn").instance()
+			"image":
+				cur_editable = preload("res://ImageEdit.tscn").instance()
 		if cur_editable != null:
 			add_child(cur_editable)
 			cur_editable.connect("edited", self, "_on_edit", [setting])
+			cur_editable.name = setting
 			cur_editable.text = setting
 			cur_editable.value = type_and_value[1]
 			cur_editable.update_text()
 		else:
 			printerr("Unknown editable setting:type: ", setting, ":", type_and_value[0])
+
+func update_gui_from_settings():
+	for gui_node in get_children():
+		if gui_node.name == "ColorEdit":
+			continue
+		gui_node.value = generator.settings[gui_node.name][1]
 
 func get_json_text() -> String:
 	return to_json(generator.settings)

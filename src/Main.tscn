@@ -7,7 +7,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
-editable_items_path = NodePath("UI/MainEditor/SettingsPanelContainer/EditableItems")
+editable_items_path = NodePath("UI/MainEditor/SettingsPanelContainer/ScrollContainer/EditableItems")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -40,16 +40,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EditableItems" type="VBoxContainer" parent="UI/MainEditor/SettingsPanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MainEditor/SettingsPanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 627.0
 margin_bottom = 1073.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="EditableItems" type="VBoxContainer" parent="UI/MainEditor/SettingsPanelContainer/ScrollContainer"]
+margin_right = 620.0
+margin_bottom = 1066.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 20
 script = ExtResource( 3 )
-planet_path = NodePath("../../../../Planet")
+planet_path = NodePath("../../../../../Planet")
 
-[node name="ColorEdit" parent="UI/MainEditor/SettingsPanelContainer/EditableItems" instance=ExtResource( 4 )]
+[node name="ColorEdit" parent="UI/MainEditor/SettingsPanelContainer/ScrollContainer/EditableItems" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 620.0
@@ -66,30 +75,38 @@ size_flags_stretch_ratio = 2.0
 [node name="MenuButtons" type="HBoxContainer" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -409.0
+margin_left = -568.0
 margin_bottom = 62.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FetchFromAsepriteButton" type="Button" parent="UI/MenuButtons"]
+margin_right = 142.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Fetch From Aseprite"
+
 [node name="ResetButton" type="Button" parent="UI/MenuButtons"]
-margin_right = 133.0
+margin_left = 146.0
+margin_right = 284.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Reset"
 
 [node name="LoadButton" type="Button" parent="UI/MenuButtons"]
-margin_left = 137.0
-margin_right = 270.0
+margin_left = 288.0
+margin_right = 426.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load"
 
 [node name="SaveButton" type="Button" parent="UI/MenuButtons"]
-margin_left = 274.0
-margin_right = 409.0
+margin_left = 430.0
+margin_right = 568.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -106,7 +123,8 @@ current_path = "/home/creikey/Documents/projects/planet-editor/src/default.plane
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="edited" from="UI/MainEditor/SettingsPanelContainer/EditableItems/ColorEdit" to="." method="_on_ColorEdit_edited"]
+[connection signal="edited" from="UI/MainEditor/SettingsPanelContainer/ScrollContainer/EditableItems/ColorEdit" to="." method="_on_ColorEdit_edited"]
+[connection signal="pressed" from="UI/MenuButtons/FetchFromAsepriteButton" to="." method="_on_FetchFromAsepriteButton_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/SaveButton" to="." method="_on_SaveButton_pressed"]
